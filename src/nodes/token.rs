@@ -240,6 +240,14 @@ impl Token {
         }
     }
 
+    // Returns the byte range of the token, if available.
+    pub fn get_byte_range(&self) -> Option<(usize, usize)> {
+        match &self.position {
+            Position::LineNumberReference { start, end, .. } => Some((*start, *end)),
+            _ => None,
+        }
+    }
+
     /// Replaces the token's content with new content while preserving line number information.
     pub fn replace_with_content<IntoCowStr: Into<Cow<'static, str>>>(
         &mut self,
