@@ -55,6 +55,11 @@ impl FieldExpression {
         &self.field
     }
 
+    // Returns a mutable reference to the field identifier of this field expression.
+    pub fn mutate_field(&mut self) -> &mut Identifier {
+        &mut self.field
+    }
+
     /// Returns a mutable reference to the prefix of this field expression.
     pub fn mutate_prefix(&mut self) -> &mut Prefix {
         &mut self.prefix
